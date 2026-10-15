@@ -13,3 +13,11 @@ export const insert = async (book) => {
 
     return result.insertId;
 }
+
+export const update = async (book) => {
+    const [result] = await pool.query (
+        "Update book Set name= ?, author= ? WHERE id = ? ",
+        [book.name, book.author, book.id]
+    );
+    return result.affectedRows;
+}
