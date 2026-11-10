@@ -18,8 +18,8 @@ export const createStudent = async (req, res) => {
 
     }catch(e){
         console.log(e);
-        res.status(500).json({
-            error: "Internal Server Error"
+        res.status(e.statusCode).json({
+            error: e.message
         });
     }
 }
@@ -30,15 +30,15 @@ export const editStudent = async (req, res) =>{
     const student = {id: parseInt(id), name, srcode, program};
     
     try{
-        const updatedStudent = await studentService.updatestudent(student);
+        const updatedStudent = await studentService.updateStudent(student);
         res.status(200).json({
             success: true,
             message: updatedStudent
         });
     }catch(e){
         console.log(e);
-        res.status(500).json({
-            error: "Internal Server Error"
+        res.status(e.statusCode).json({
+            error: e.message
         });
     }
 }
@@ -54,8 +54,8 @@ export const deleteStudent = async (req, res) =>{
         });
     }catch(e){
         console.log(e);
-        res.status(500).json({
-            error: "Internal Server Error"
+        res.status(e.statusCode).json({
+            error: e.message
         });
     }
 }
