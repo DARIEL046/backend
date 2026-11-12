@@ -19,6 +19,7 @@ export const findBookById = async (id) => {
     return rows;
 }
 
+//Insert
 export const insert = async (book) => {
     const [result] = await pool.query(
       "INSERT INTO book(name, author) VALUES (?,?)",
